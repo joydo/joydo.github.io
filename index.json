@@ -1,0 +1,129 @@
+{
+    "copyright_info": "Content is hosted for personal archiving purposes only.  Contact server owner for any takedown requests.",
+    "info": "This is an index of site data archived by ArchiveBox: The self-hosted web archive.",
+    "last_run_cmd": [
+        "/home/reverse/.py3/bin/archivebox",
+        "list",
+        "--json",
+        "--with-headers"
+    ],
+    "links": [
+        {
+            "history": {},
+            "schema": "Link",
+            "sources": [
+                "/home/reverse/jdong_github_/jdarchives/sources/1611212210-import.txt"
+            ],
+            "tags": null,
+            "timestamp": "1611212210.158576",
+            "title": "Project Zero: The State of State Machines",
+            "updated": null,
+            "url": "https://googleprojectzero.blogspot.com/2021/01/the-state-of-state-machines.html"
+        }
+    ],
+    "meta": {
+        "dependencies": {
+            "ARCHIVEBOX_BINARY": {
+                "enabled": true,
+                "hash": "md5:c05a7634cc58de8855b0c16a42d4d4ee",
+                "is_valid": true,
+                "path": "/home/reverse/.py3/bin/archivebox",
+                "version": "0.5.3"
+            },
+            "CHROME_BINARY": {
+                "enabled": true,
+                "hash": null,
+                "is_valid": false,
+                "path": null,
+                "version": null
+            },
+            "CURL_BINARY": {
+                "enabled": true,
+                "hash": "md5:0bca73396b65a3558a26178400420388",
+                "is_valid": true,
+                "path": "/usr/bin/curl",
+                "version": "curl 7.68.0 (x86_64-pc-linux-gnu)"
+            },
+            "DJANGO_BINARY": {
+                "enabled": true,
+                "hash": "md5:b104c708515bb424da6b8b4f4aecb821",
+                "is_valid": true,
+                "path": "/home/reverse/.py3/lib/python3.8/site-packages/django/bin/django-admin.py",
+                "version": "3.1.3 final (0)"
+            },
+            "GIT_BINARY": {
+                "enabled": true,
+                "hash": "md5:a556f217b06b34ad6930efbac85cf586",
+                "is_valid": true,
+                "path": "/usr/bin/git",
+                "version": "git version 2.25.1"
+            },
+            "MERCURY_BINARY": {
+                "enabled": true,
+                "hash": "md5:442d2d7637b7076e181ef3e756c180a8",
+                "is_valid": true,
+                "path": "/home/reverse/jdong_github_/jdarchives/node_modules/archivebox/node_modules/@postlight/mercury-parser/cli.js",
+                "version": "1.0.0"
+            },
+            "NODE_BINARY": {
+                "enabled": true,
+                "hash": "md5:eba56f8c0dafb3f734358620c60fa2c9",
+                "is_valid": true,
+                "path": "/usr/bin/node",
+                "version": "v10.19.0"
+            },
+            "PYTHON_BINARY": {
+                "enabled": true,
+                "hash": "md5:0bca73396b65a3558a26178400420388",
+                "is_valid": true,
+                "path": "/usr/bin/python3.8",
+                "version": "3.8.5"
+            },
+            "READABILITY_BINARY": {
+                "enabled": true,
+                "hash": "md5:bb7a924c6ea3a1a2a3423c3519f6788c",
+                "is_valid": true,
+                "path": "/home/reverse/jdong_github_/jdarchives/node_modules/archivebox/node_modules/readability-extractor/readability-extractor",
+                "version": "0.1.0"
+            },
+            "RIPGREP_BINARY": {
+                "enabled": true,
+                "hash": "md5:579585a2938bf63608e717aa7c0effd3",
+                "is_valid": true,
+                "path": "/usr/bin/rg",
+                "version": "ripgrep 11.0.2"
+            },
+            "SINGLEFILE_BINARY": {
+                "enabled": true,
+                "hash": "md5:4e97b6a5f8aec57e9bc55ee4e7ae53e3",
+                "is_valid": true,
+                "path": "/home/reverse/jdong_github_/jdarchives/node_modules/archivebox/node_modules/single-file/cli/single-file",
+                "version": "0.3.2"
+            },
+            "WGET_BINARY": {
+                "enabled": true,
+                "hash": "md5:996940118df7bb2aaa718589d4e95c08",
+                "is_valid": true,
+                "path": "/usr/bin/wget",
+                "version": "GNU Wget 1.20.3"
+            },
+            "YOUTUBEDL_BINARY": {
+                "enabled": true,
+                "hash": "md5:c49f7fa0ad3c2fb4af4fe48de445d802",
+                "is_valid": true,
+                "path": "/home/reverse/.py3/bin/youtube-dl",
+                "version": "2021.01.16"
+            }
+        },
+        "docs": "https://github.com/ArchiveBox/ArchiveBox/wiki",
+        "git_sha": "0.5.3",
+        "issues": "https://github.com/ArchiveBox/ArchiveBox/issues",
+        "project": "ArchiveBox",
+        "source": "https://github.com/ArchiveBox/ArchiveBox",
+        "version": "0.5.3",
+        "website": "https://ArchiveBox.io"
+    },
+    "num_links": 1,
+    "schema": "archivebox.index.json",
+    "updated": "2021-01-21T07:02:18.988237"
+}
