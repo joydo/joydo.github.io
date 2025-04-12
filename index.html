@@ -63,7 +63,7 @@
                 }
                 
                 // 检查 NativeMethod 是否存在
-                if (typeof window.Native.NativeMethod !== 'function') {
+                if (typeof window.Native.nativeMethod !== 'function') {
                     resultDiv.innerHTML = '<div class="error">错误：Native 对象中不存在 NativeMethod 方法。可用方法如下：</div>';
                     
                     // 列出所有可用方法
