@@ -82,11 +82,13 @@
                     return;
                 }
                 
-
+                result = null;
                 // 调用 NativeMethod 方法
                 //window.Native.nativeMethod("", "getDeviceInfo", "", "122345678", "honorBridgeCallback");
-                
-                const result = window.Native.nativeMethod("", "getAppDeviceInfo", "", "122345678", "honorBridgeCallback");
+               window.honorBridgeCallback = (response) => {
+                    result = response;
+                }
+                window.Native.nativeMethod("", "getAppDeviceInfo", "", "122345678", "honorBridgeCallback");
                 // 显示结果
                 resultDiv.innerHTML = '<div class="success">调用成功！</div>';
                 resultDiv.innerHTML += '<h3>返回结果：</h3>';
@@ -121,9 +123,6 @@
         
         // 页面加载完成后自动调用
         window.onload = function() {
-            window.honorBridgeCallback = (response) => {
-                    return response;
-                }
             // 可以取消下面的注释来让页面加载时自动调用
             callNativeMethod();
         };
