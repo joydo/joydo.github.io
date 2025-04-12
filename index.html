@@ -1,25 +1,170 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的 GitHub Pages 网站</title>
+    <title>WebView 全局对象检查</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px;
         }
-        h1 {
-            color: #333;
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            height: 400px;
+            overflow: auto;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .function {
+            color: #0000FF;
+        }
+        .object {
+            color: #8B008B;
+        }
+        .primitive {
+            color: #006400;
+        }
+        .interface {
+            font-weight: bold;
+            color: #FF0000;
         }
     </style>
 </head>
 <body>
-    <h1>欢迎访问我的网站</h1>
-    <p>这是一个通过 GitHub Pages 托管的简单网站。</p>
-    <p>你可以在此添加任何你想要展示的内容。</p>
+    <h2>WebView 全局对象检查工具</h2>
+    <button onclick="printGlobalFunctions()">打印全局函数和对象</button>
+    <button onclick="checkJavascriptInterfaces()">检查 JavascriptInterface</button>
+    <div id="output"></div>
+
+    <script>
+        // 打印所有全局函数和对象
+        function printGlobalFunctions() {
+            var output = document.getElementById('output');
+            output.innerHTML = '<h3>Window 全局对象列表：</h3>';
+            
+            var html = '<ul>';
+            var functionCount = 0;
+            var objectCount = 0;
+            var otherCount = 0;
+            
+            // 按字母顺序排序
+            var props = Object.getOwnPropertyNames(window).sort();
+            
+            for (var i = 0; i < props.length; i++) {
+                var prop = props[i];
+                try {
+                    var type = typeof window[prop];
+                    var classString = '';
+                    
+                    if (type === 'function') {
+                        classString = 'function';
+                        functionCount++;
+                    } else if (type === 'object' && window[prop] !== null) {
+                        classString = 'object';
+                        objectCount++;
+                    } else {
+                        classString = 'primitive';
+                        otherCount++;
+                    }
+                    
+                    html += '<li><span class="' + classString + '">' + 
+                           prop + ' (' + type + ')</span></li>';
+                } catch(e) {
+                    html += '<li>' + prop + ' (访问受限: ' + e.message + ')</li>';
+                }
+            }
+            
+            html += '</ul>';
+            html += '<p>总计: ' + props.length + ' 项 (函数: ' + functionCount + 
+                   ', 对象: ' + objectCount + ', 其他: ' + otherCount + ')</p>';
+            
+            output.innerHTML += html;
+        }
+        
+        // 专门检查注册的 JavascriptInterface
+        function checkJavascriptInterfaces() {
+            var output = document.getElementById('output');
+            output.innerHTML = '<h3>检查 Android JavascriptInterface：</h3>';
+            
+            var html = '<ul>';
+            var interfaceFound = false;
+            
+            // 常见的 JavascriptInterface 名称
+            var commonInterfaces = ['Android', 'JavaScriptInterface', 'JSBridge', 'WebAppInterface', 'JSInterface'];
+            
+            for (var i = 0; i < commonInterfaces.length; i++) {
+                var interfaceName = commonInterfaces[i];
+                if (window[interfaceName]) {
+                    interfaceFound = true;
+                    html += '<li class="interface">找到接口: ' + interfaceName + '</li>';
+                    html += '<ul>';
+                    
+                    // 列出接口中的所有方法
+                    var methodFound = false;
+                    for (var method in window[interfaceName]) {
+                        methodFound = true;
+                        var type = typeof window[interfaceName][method];
+                        html += '<li>' + method + ' (' + type + ')</li>';
+                    }
+                    
+                    if (!methodFound) {
+                        html += '<li>没有找到可用方法</li>';
+                    }
+                    
+                    html += '</ul>';
+                }
+            }
+            
+            // 搜索其他可能的接口
+            var suspectedInterfaces = [];
+            for (var prop in window) {
+                if (typeof window[prop] === 'object' && 
+                    window[prop] !== null && 
+                    !window[prop].hasOwnProperty('window') && // 排除原生对象
+                    commonInterfaces.indexOf(prop) === -1) {  // 排除已知接口
+                    
+                    var hasMethods = false;
+                    for (var method in window[prop]) {
+                        if (typeof window[prop][method] === 'function') {
+                            hasMethods = true;
+                            break;
+                        }
+                    }
+                    
+                    if (hasMethods) {
+                        suspectedInterfaces.push(prop);
+                    }
+                }
+            }
+            
+            if (suspectedInterfaces.length > 0) {
+                interfaceFound = true;
+                html += '<li class="interface">可能的其他接口：</li>';
+                html += '<ul>';
+                for (var j = 0; j < suspectedInterfaces.length; j++) {
+                    var name = suspectedInterfaces[j];
+                    html += '<li>' + name + ' (可能的接口)</li>';
+                }
+                html += '</ul>';
+            }
+            
+            if (!interfaceFound) {
+                html += '<li>未发现任何 JavascriptInterface</li>';
+            }
+            
+            html += '</ul>';
+            output.innerHTML += html;
+        }
+    </script>
 </body>
 </html>
