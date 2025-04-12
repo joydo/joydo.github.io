@@ -89,7 +89,7 @@
                 let result = null;
                 // 调用 NativeMethod 方法
                 //window.Native.nativeMethod("", "getDeviceInfo", "", "122345678", "honorBridgeCallback");
-                var callback = "honorBridgeCallback";
+                var callback = "handleScreenShotCallback";
                 window.Native.nativeMethod("com.hihonor.hm.h5.container.js.method.DeviceMethods", "getAppDeviceInfo", "", "122345678", callback);
                 // 显示结果
                 resultDiv.innerHTML = '<div class="success">调用成功！</div>';
@@ -126,7 +126,7 @@
         // 页面加载完成后自动调用
         window.onload = function() {
             // 可以取消下面的注释来让页面加载时自动调用
-            callNativeMethod();
+            //callNativeMethod();
         };
     </script>
 </body>
